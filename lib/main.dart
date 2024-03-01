@@ -1,8 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quan_li_tai_chinh/home_page.dart';
+import 'package:flutter_quan_li_tai_chinh/firebase_options.dart';
+import 'package:flutter_quan_li_tai_chinh/login_page.dart';
 
 late Size mq;
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MainApp());
 }
 
@@ -15,9 +21,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Quan ly chi tieu",
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }
-
-class CommonThings {}

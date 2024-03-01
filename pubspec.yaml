@@ -11,6 +11,10 @@ dependencies:
     sdk: flutter
   flutter_toggle_tab: ^1.4.1
   syncfusion_flutter_charts: ^24.1.47+2
+  sign_in_button: ^3.2.0
+  firebase_auth: ^4.17.6
+  firebase_core: ^2.25.5
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:

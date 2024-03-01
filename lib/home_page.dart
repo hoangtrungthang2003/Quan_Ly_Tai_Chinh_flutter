@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/account_screen.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/add_transaction_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/home_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/transaction_screen.dart';
 
@@ -14,9 +17,9 @@ class _HomePageState extends State<HomePage> {
   List<Widget> body = const [
     HomeScreen(),
     TransactionScreen(),
-    Icon(Icons.add),
+    AddTransaction(),
     Icon(Icons.pending_actions_sharp),
-    Icon(Icons.person),
+    AccountScreen(),
   ];
 
   @override

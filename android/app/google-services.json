@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "514802221636",
+    "project_id": "quan-ly-chi-tieu-8dff9",
+    "storage_bucket": "quan-ly-chi-tieu-8dff9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514802221636:android:04ff3b598cf012fbd97211",
+        "android_client_info": {
+          "package_name": "com.example.flutter_quan_li_tai_chinh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChOjf8fsgu06s6eshiUrk0fMteu-5uSRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
