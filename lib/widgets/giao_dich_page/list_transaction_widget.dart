@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/home_page/customCard2.dart';
 
-class HistoryWidget extends StatefulWidget {
-  const HistoryWidget({super.key});
+class ListTransactionWidget extends StatefulWidget {
+  const ListTransactionWidget({super.key});
 
   @override
-  State<HistoryWidget> createState() => _HistoryWidgetState();
+  State<ListTransactionWidget> createState() => _ListTransactionWidgetState();
 }
 
-class _HistoryWidgetState extends State<HistoryWidget> {
+class _ListTransactionWidgetState extends State<ListTransactionWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -17,53 +17,55 @@ class _HistoryWidgetState extends State<HistoryWidget> {
           Container(
             padding: const EdgeInsets.all(8),
             color: Colors.white,
-            child: Column(
+            child: const Column(
               children: [
-                const Row(
+                Text("3 kết quả",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Tiền vào"),
+                    Text("Khoản thu"),
                     Text(
                       "600,000.00 đ",
                       style: TextStyle(
-                          fontWeight: FontWeight.w400, color: Colors.blue),
+                          fontWeight: FontWeight.w400,
+                          color: Colors.blue,
+                          fontSize: 16),
                     ),
                   ],
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Tiền ra"),
+                    Text("Khoản chi"),
                     Text(
                       "100,000.00 đ",
                       style: TextStyle(
-                          fontWeight: FontWeight.w400, color: Colors.red),
+                          fontWeight: FontWeight.w400,
+                          color: Colors.red,
+                          fontSize: 16),
                     ),
                   ],
                 ),
-                const Divider(
+                Divider(
                   thickness: .15,
                   color: Colors.grey,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(""),
                     Text(
                       "500,000.00 đ",
                       style: TextStyle(
-                          fontWeight: FontWeight.w500, color: Colors.black87),
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black87,
+                          fontSize: 16),
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Xem báo cáo giai đoạn này",
-                    style: TextStyle(color: Colors.green),
-                  ),
-                )
+                SizedBox(height: 10),
               ],
             ),
           ),

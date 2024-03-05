@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/account_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/add_transaction_screen.dart';

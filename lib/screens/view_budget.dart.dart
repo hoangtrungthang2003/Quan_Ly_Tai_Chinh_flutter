@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:view/Screens/lineChart.dart';
-import 'package:view/Screens/pricePoints.dart';
+import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/lineChart.dart';
+import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/pricePoints.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Body_Screen extends StatefulWidget {
+  const Body_Screen({super.key});
+
   @override
   State<Body_Screen> createState() => _Body_ScreenState();
 }
 
 class _Body_ScreenState extends State<Body_Screen> {
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   bool isChecked = false;
 
   @override
@@ -22,14 +22,14 @@ class _Body_ScreenState extends State<Body_Screen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(
             children: [
-              Row(
+              const Row(
                 children: [
                   FaIcon(
                     FontAwesomeIcons.fly,
                     size: 33,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: EdgeInsets.only(left: 20),
                     child: Text(
                       "Đi Du Lịch",
                       style: TextStyle(fontSize: 20),
@@ -37,15 +37,15 @@ class _Body_ScreenState extends State<Body_Screen> {
                   ),
                 ],
               ),
-              SizedBox(height: 15),
-              Row(
+              const SizedBox(height: 15),
+              const Row(
                 children: [
                   FaIcon(
                     FontAwesomeIcons.coins,
                     size: 33,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: EdgeInsets.only(left: 20),
                     child: Text(
                       "0",
                       style: TextStyle(fontSize: 20),
@@ -53,7 +53,7 @@ class _Body_ScreenState extends State<Body_Screen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -62,24 +62,24 @@ class _Body_ScreenState extends State<Body_Screen> {
                   Container(
                     width: 351,
                     decoration: BoxDecoration(
-                      color: Color(0xFFececf9),
+                      color: const Color(0xFFececf9),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Text("Đã chi", style: TextStyle(fontSize: 12)),
                               SizedBox(width: 260),
                               Text("Còn lại", style: TextStyle(fontSize: 12)),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
-                          Row(
+                          const Row(
                             children: [
                               Text("800.000đ", style: TextStyle(fontSize: 12)),
                               SizedBox(
@@ -89,7 +89,7 @@ class _Body_ScreenState extends State<Body_Screen> {
                                   style: TextStyle(fontSize: 12)),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Row(
@@ -126,28 +126,28 @@ class _Body_ScreenState extends State<Body_Screen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
-              Row(
+              const SizedBox(height: 20),
+              const Row(
                 children: [
                   FaIcon(
                     FontAwesomeIcons.calendar,
                     size: 33,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Container(
+                    padding: EdgeInsets.only(left: 20),
+                    child: SizedBox(
                       width: 200,
                       child: Text("20/11/2003"),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 15),
-              Row(
+              const SizedBox(height: 15),
+              const Row(
                 children: [
                   FaIcon(FontAwesomeIcons.wallet),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: EdgeInsets.only(left: 20),
                     child: Text(
                       "Tên Ví",
                       style: TextStyle(fontSize: 20),
@@ -162,7 +162,7 @@ class _Body_ScreenState extends State<Body_Screen> {
           width: 400,
           height: 10,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color:
                   Colors.blue, // You can replace this with your desired color
             ),
@@ -175,7 +175,7 @@ class _Body_ScreenState extends State<Body_Screen> {
               Container(
                 child: CustomLineChart(pricePoints),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               const Row(
@@ -194,8 +194,8 @@ class _Body_ScreenState extends State<Body_Screen> {
                   height: 20,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   children: [
                     Text("Nên chi hằng ngày"),
@@ -211,11 +211,11 @@ class _Body_ScreenState extends State<Body_Screen> {
               SizedBox(
                 child: Container(
                   height: 2,
-                  color: Color(0xFFccccb3),
+                  color: const Color(0xFFccccb3),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   children: [
                     Text("Dự kiến chi tiêu"),
@@ -231,11 +231,11 @@ class _Body_ScreenState extends State<Body_Screen> {
               SizedBox(
                 child: Container(
                   height: 2,
-                  color: Color(0xFFccccb3),
+                  color: const Color(0xFFccccb3),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   children: [
                     Text("Thực tế chi tiêu hằng ngày"),
@@ -264,14 +264,14 @@ class _Body_ScreenState extends State<Body_Screen> {
               print("Danh Sách Giao Dịch");
             },
             style: TextButton.styleFrom(
-              backgroundColor: Color(0xFF00CB14),
+              backgroundColor: const Color(0xFF00CB14),
               shape: RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.circular(10), // Điều này tạo nút bo tròn
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(6.0),
+            child: const Padding(
+              padding: EdgeInsets.all(6.0),
               child: Text(
                 "DANH SÁCH GIAO DỊCH",
                 style: TextStyle(fontSize: 14.0, color: Colors.white),
@@ -279,7 +279,7 @@ class _Body_ScreenState extends State<Body_Screen> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
       ],
@@ -287,17 +287,17 @@ class _Body_ScreenState extends State<Body_Screen> {
   }
 
   Future<void> _selectDate(BuildContext context) async {
-    DateTime? _picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100), // Adjusted to a reasonable date range
     );
 
-    if (_picked != null) {
+    if (picked != null) {
       setState(
         () {
-          _dateController.text = _picked.toString().split(" ")[0];
+          _dateController.text = picked.toString().split(" ")[0];
         },
       );
     }

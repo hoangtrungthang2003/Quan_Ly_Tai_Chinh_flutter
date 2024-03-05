@@ -1,16 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Body_Screen extends StatefulWidget {
+  const Body_Screen({super.key});
+
   @override
   State<Body_Screen> createState() => _Body_ScreenState();
 }
 
 class _Body_ScreenState extends State<Body_Screen> {
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   bool isChecked = false;
 
   @override
@@ -21,7 +19,7 @@ class _Body_ScreenState extends State<Body_Screen> {
           width: 400,
           height: 30,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.red, // You can replace this with your desired color
             ),
           ),
@@ -34,26 +32,33 @@ class _Body_ScreenState extends State<Body_Screen> {
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.confirmation_num_sharp),
+                    icon: const Icon(Icons.confirmation_num_sharp),
                     iconSize: 30,
                   ),
-                  Text(
+                  const Text(
                     "Chọn nhóm",
                     style: TextStyle(fontSize: 20, color: Color(0xff969696)),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.wallet_travel),
+                    icon: const Icon(Icons.wallet_travel),
                     iconSize: 30,
                   ),
                   Expanded(
                     child: Container(
-                      child: TextField(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Color(0xff26FC3B),
+                          ),
+                        ),
+                      ),
+                      child: const TextField(
                         decoration: InputDecoration(
                           hintText: "0", // Dòng chữ hiển thị trước khi nhập
                           labelStyle: TextStyle(
@@ -68,28 +73,28 @@ class _Body_ScreenState extends State<Body_Screen> {
                           color: Color(0xff26FC3B),
                         ),
                       ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Color(0xff26FC3B),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.note),
+                    icon: const Icon(Icons.note),
                     iconSize: 30,
                   ),
                   Expanded(
                     child: Container(
-                      child: TextField(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      child: const TextField(
                         decoration: InputDecoration(
                           hintText: "Them ghi chu",
                           labelStyle: TextStyle(
@@ -103,28 +108,21 @@ class _Body_ScreenState extends State<Body_Screen> {
                           color: Colors.black,
                         ),
                       ),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   IconButton(
                     onPressed: () {
                       _selectDate(context);
                     },
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                     iconSize: 30,
                   ),
-                  Container(
+                  SizedBox(
                     width: 200,
                     child: TextField(
                       controller: _dateController,
@@ -144,15 +142,15 @@ class _Body_ScreenState extends State<Body_Screen> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.confirmation_num_sharp),
+                    icon: const Icon(Icons.confirmation_num_sharp),
                     iconSize: 30,
                   ),
-                  Text(
+                  const Text(
                     "Tên Ví",
                     style: TextStyle(fontSize: 20),
                   ),
@@ -166,14 +164,14 @@ class _Body_ScreenState extends State<Body_Screen> {
                       // Hành động bạn muốn thực hiện khi nhấp vào văn bản
                       print("Bạn đã nhấp vào văn bản 'Them chi tiet'");
                     },
-                    child: Text("Them chi tiet"),
+                    child: const Text("Them chi tiet"),
                   ),
                   IconButton(
                     onPressed: () {
                       // Hành động bạn muốn thực hiện khi nhấp vào biểu tượng
                       print("Bạn đã nhấp vào biểu tượng");
                     },
-                    icon: Icon(Icons.arrow_drop_down),
+                    icon: const Icon(Icons.arrow_drop_down),
                   ),
                 ],
               )
@@ -184,7 +182,7 @@ class _Body_ScreenState extends State<Body_Screen> {
           width: 400,
           height: 10,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color:
                   Colors.blue, // You can replace this with your desired color
             ),
@@ -235,7 +233,7 @@ class _Body_ScreenState extends State<Body_Screen> {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 400,
           height: 25,
           // child: Container(
@@ -262,8 +260,8 @@ class _Body_ScreenState extends State<Body_Screen> {
               shadowColor: Colors.grey, // Set the shadow color
               elevation: 5, // Set the elevation (depth of the shadow)
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
+            child: const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Text(
                 "Lưu",
                 style: TextStyle(fontSize: 16.0),
@@ -276,16 +274,16 @@ class _Body_ScreenState extends State<Body_Screen> {
   }
 
   Future<void> _selectDate(BuildContext context) async {
-    DateTime? _picked = await showDatePicker(
+    DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2100), // Adjusted to a reasonable date range
     );
 
-    if (_picked != null) {
+    if (picked != null) {
       setState(() {
-        _dateController.text = _picked.toString().split(" ")[0];
+        _dateController.text = picked.toString().split(" ")[0];
       });
     }
   }

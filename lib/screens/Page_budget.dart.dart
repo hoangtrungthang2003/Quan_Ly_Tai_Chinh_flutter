@@ -1,18 +1,17 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class BodyScreen extends StatelessWidget {
+  const BodyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
               Row(
@@ -61,7 +60,7 @@ class BodyScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               const Row(
@@ -76,16 +75,16 @@ class BodyScreen extends StatelessWidget {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "0",
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Column(
@@ -144,7 +143,7 @@ class BodyScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Padding(
@@ -154,14 +153,14 @@ class BodyScreen extends StatelessWidget {
                     print("Danh Sách Giao Dịch");
                   },
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF00CB14),
+                    backgroundColor: const Color(0xFF00CB14),
                     shape: RoundedRectangleBorder(
                       borderRadius:
                           BorderRadius.circular(10), // Điều này tạo nút bo tròn
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(6.0),
                     child: Text(
                       "Tạo Ngân Sách",
                       style: TextStyle(fontSize: 14.0, color: Colors.white),
@@ -169,7 +168,7 @@ class BodyScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
             ],
@@ -178,7 +177,7 @@ class BodyScreen extends StatelessWidget {
         SizedBox(
           height: 30,
           child: Container(
-            color: Color(0xFFf2e6ff),
+            color: const Color(0xFFf2e6ff),
           ),
         ),
         buildSection("Mua sam", "100.000", "10003", "Hom nay"),
@@ -203,11 +202,11 @@ class BodyScreen extends StatelessWidget {
   Widget buildSection(
       String title, String price, String subTitle, String date) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: Column(
         children: [
           Container(
-            color: Color(0xFFf6f8fa),
+            color: const Color(0xFFf6f8fa),
             child: Row(
               children: [
                 Container(
@@ -218,24 +217,24 @@ class BodyScreen extends StatelessWidget {
                     color: Colors.red,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Text(title),
-                Spacer(),
+                const Spacer(),
                 Text(price),
               ],
             ),
           ),
           Row(
             children: [
-              Spacer(),
+              const Spacer(),
               Text(subTitle),
             ],
           ),
           Row(
             children: [
-              SizedBox(width: 50),
+              const SizedBox(width: 50),
               Stack(
                 children: [
                   Container(
@@ -263,12 +262,12 @@ class BodyScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 100,
               ),
               Text(
                 date,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 10,
                 ),
               ),

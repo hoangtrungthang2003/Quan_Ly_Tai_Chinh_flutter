@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:view/Screens/pricePoints.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/pricePoints.dart';
 
 class CustomLineChart extends StatelessWidget {
   final List<PricePoint> points;
@@ -17,7 +17,7 @@ class CustomLineChart extends StatelessWidget {
             LineChartBarData(
               spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
               isCurved: false,
-              dotData: FlDotData(show: true),
+              dotData: const FlDotData(show: true),
             ),
           ],
         ),
