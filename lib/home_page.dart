@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/account_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/add_transaction_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/home_screen.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/list_transaction_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/transaction_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +18,9 @@ class _HomePageState extends State<HomePage> {
     HomeScreen(),
     TransactionScreen(),
     AddTransaction(),
-    Icon(Icons.pending_actions_sharp),
+    // Icon(Icons.pending_actions_sharp),
+    // ChooseItemScreen(),
+    ListTransaction(),
     AccountScreen(),
   ];
 

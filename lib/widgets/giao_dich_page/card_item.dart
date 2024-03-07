@@ -20,16 +20,17 @@ class CardItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 20.0,
+                radius: 24.0,
                 backgroundImage: AssetImage(iconUrl),
               ),
+              const SizedBox(width: 20),
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                   fontWeight: FontWeight.w500,
                 ),
               ),

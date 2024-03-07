@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/main.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/choose_item_screen.dart';
 
 class AddTransaction extends StatefulWidget {
   const AddTransaction({super.key});
@@ -14,29 +15,14 @@ class _AddTransactionState extends State<AddTransaction> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white, // Đặt màu trắng cho AppBar
-        bottom: PreferredSize(
-          preferredSize:
-              const Size.fromHeight(4.0), // Đặt chiều cao cho đáy AppBar
-          child: Container(
-            decoration: const BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black, // Màu và độ trong suốt
-                  spreadRadius: 0.1, // Độ mở rộng của bóng mờ
-                  blurRadius: 2, // Độ mờ
-                  offset:
-                      Offset(0, 3), // Vị trí của bóng mờ (dịch ngang, dịch dọc)
-                ),
-              ],
-            ),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(4.0), // Đặt chiều cao cho đáy AppBar
+          child: Divider(
+            thickness: .2,
+            color: Colors.grey,
           ),
         ),
-        leading: IconButton(
-          icon: const Icon(Icons.close,
-              color: Colors.black), // Màu của biểu tượng "X"
-          onPressed: () {},
-        ),
-
+        centerTitle: true,
         title: const Text(
           "Thêm giao dịch",
           style: TextStyle(fontWeight: FontWeight.w600),
@@ -82,7 +68,14 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 const SizedBox(height: 20),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ChooseItemScreen()), // Replace YourNewScreen with the actual name of your new screen
+                    );
+                  },
                   child: const Row(
                     children: [
                       CircleAvatar(

@@ -21,7 +21,7 @@ class _ListTransactionWidgetState extends State<ListTransactionWidget> {
               children: [
                 Text("3 kết quả",
                     style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

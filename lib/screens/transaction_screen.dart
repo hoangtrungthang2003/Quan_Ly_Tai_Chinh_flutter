@@ -57,7 +57,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                   ),
                 ),
                 onPressed: () {
-                  // Xử lý khi nút được nhấn
+            //       Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => YourNewScreen()), // Replace YourNewScreen with the actual name of your new screen
+            // );
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quan_li_tai_chinh/widgets/giao_dich_page/history_widget.dart';
+import 'package:flutter_quan_li_tai_chinh/widgets/giao_dich_page/list_transaction_widget.dart';
 
 class ListTransaction extends StatefulWidget {
   const ListTransaction({super.key});
@@ -15,16 +15,22 @@ class _ListTransactionState extends State<ListTransaction> {
       backgroundColor: const Color.fromARGB(255, 242, 239, 255),
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.close,
-              color: Colors.black),
+          icon: const Icon(Icons.close, color: Colors.black),
           onPressed: () {},
         ),
         title: const Text(
           "Danh sách giao dịch",
           style: TextStyle(fontWeight: FontWeight.w600),
         ),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(1.0), // Height of the divider
+          child: Divider(
+            thickness: .2,
+            color: Colors.grey,
+          ),
+        ),
       ),
-      body: const HistoryWidget(),
+      body: const SingleChildScrollView(child: ListTransactionWidget()),
     );
   }
 }
