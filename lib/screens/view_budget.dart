@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quan_li_tai_chinh/screens/update_screen.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/edit_budget.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/lineChart.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/pricePoints.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,12 +7,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 
 class View_Budget extends StatelessWidget {
+  const View_Budget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Xem ngân sách"),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.close)),
+        title: const Text("Xem ngân sách"),
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
         actions: [
           IconButton(
             onPressed: () {
@@ -20,31 +22,31 @@ class View_Budget extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        UpdateBudget()), // Thay DetailPage() bằng widget của trang chi tiết
+                        const editBudget()), // Thay DetailPage() bằng widget của trang chi tiết
               );
             },
-            icon: FaIcon(
+            icon: const FaIcon(
               FontAwesomeIcons.pencil,
               size: 26,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           IconButton(
             onPressed: () {},
-            icon: FaIcon(
+            icon: const FaIcon(
               FontAwesomeIcons.trash,
               size: 26,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
         ],
         backgroundColor: Colors.lightBlue,
       ),
-      body: Viewbudget(),
+      body: const Viewbudget(),
     );
   }
 }

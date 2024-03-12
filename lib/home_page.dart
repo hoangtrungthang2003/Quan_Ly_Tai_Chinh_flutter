@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
           : AddTransaction(wallet: wallet!),
       // Icon(Icons.pending_actions_sharp),
       // ChooseItemScreen(),
-      const Budget(),
+       Budget(),
       const account(),
     ];
     return Scaffold(

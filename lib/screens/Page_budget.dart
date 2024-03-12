@@ -6,7 +6,37 @@ import 'package:flutter_quan_li_tai_chinh/screens/update_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/view_budget.dart';
 
 class Budget extends StatelessWidget {
-  const Budget({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Ngân sách đang ap..."),
+        centerTitle: true,
+        actions: [
+          Container(
+            width: 35,
+            height: 35,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(35), color: Colors.red),
+          ),
+          Icon(Icons.arrow_drop_down),
+          SizedBox(
+            width: 10,
+          ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
+          SizedBox(
+            width: 13,
+          ),
+        ],
+        backgroundColor: Colors.lightBlue,
+      ),
+      body: budget_page(),
+    );
+  }
+}
+
+class budget_page extends StatelessWidget {
+  const budget_page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +173,7 @@ class Budget extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => viewbudget()),
+                      MaterialPageRoute(builder: (context) => UpdateBudget()),
                     );
                   },
                   style: TextButton.styleFrom(

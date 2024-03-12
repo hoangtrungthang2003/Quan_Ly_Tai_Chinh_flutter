@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/Page_budget.dart';
 
-class viewbudget extends StatelessWidget {
-  const viewbudget({super.key});
+class editBudget extends StatelessWidget {
+  const editBudget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Thêm ngân sách"),
+
+        title: Text("Sửa ngân sách"),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -16,19 +17,20 @@ class viewbudget extends StatelessWidget {
             icon: const Icon(Icons.close)),
         backgroundColor: Colors.lightBlue,
       ),
-      body: const update_budget(),
+
+      body: edit_budget(),
     );
   }
 }
 
-class update_budget extends StatefulWidget {
-  const update_budget({super.key});
+class edit_budget extends StatefulWidget {
+  const edit_budget({super.key});
 
   @override
-  State<update_budget> createState() => _update_budgetState();
+  State<edit_budget> createState() => _edit_budgetState();
 }
 
-class _update_budgetState extends State<update_budget> {
+class _edit_budgetState extends State<edit_budget> {
   final TextEditingController _dateController = TextEditingController();
   bool isChecked = false;
 
@@ -51,20 +53,9 @@ class _update_budgetState extends State<update_budget> {
                     icon: const Icon(Icons.confirmation_num_sharp),
                     iconSize: 30,
                   ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      hintText: "Chọn nhóm", // Dòng chữ hiển thị trước khi nhập
-                      labelStyle: TextStyle(
-                        fontSize: 24,
-                        color: Color(0xff26FC3B),
-                      ),
-                      border: InputBorder
-                          .none, // Ẩn đường viền mặc định của TextField
-                    ),
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Color(0xff26FC3B),
-                    ),
+                  const Text(
+                    "Chọn nhóm",
+                    style: TextStyle(fontSize: 20, color: Color(0xff969696)),
                   ),
                 ],
               ),
