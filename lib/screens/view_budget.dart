@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/edit_budget.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/update_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/lineChart.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/budget_page/pricePoints.dart';
@@ -20,7 +21,7 @@ class View_Budget extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        UpdateBudget()), // Thay DetailPage() bằng widget của trang chi tiết
+                        editBudget()), // Thay DetailPage() bằng widget của trang chi tiết
               );
             },
             icon: FaIcon(

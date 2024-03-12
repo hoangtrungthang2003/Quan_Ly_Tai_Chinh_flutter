@@ -6,7 +6,7 @@ class UpdateBudget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sửa ngân sách"),
+        title: Text("Thêm ngân sách"),
         leading: IconButton(
             onPressed: () {
               Navigator.push(
