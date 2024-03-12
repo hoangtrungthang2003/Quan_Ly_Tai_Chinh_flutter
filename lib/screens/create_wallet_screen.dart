@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quan_li_tai_chinh/apis/APIs.dart';
 import 'package:flutter_quan_li_tai_chinh/main.dart';
-import 'package:flutter_quan_li_tai_chinh/models/wallet.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/choose_item_screen.dart';
-import 'package:flutter_quan_li_tai_chinh/screens/transaction_screen.dart';
-import 'package:logger/logger.dart';
 
-class AddTransaction extends StatefulWidget {
-  const AddTransaction({super.key, this.wallet});
-  final Wallet? wallet;
+class CreateWalletScreen extends StatefulWidget {
+  const CreateWalletScreen({super.key});
 
   @override
-  State<AddTransaction> createState() => _AddTransactionState();
+  State<CreateWalletScreen> createState() => _CreateWalletScreenState();
 }
 
-class _AddTransactionState extends State<AddTransaction> {
-  String? selectedUrl;
-  String? selectedtitle;
-  TextEditingController amountInput = TextEditingController();
-  final Logger logger = Logger();
-
+class _CreateWalletScreenState extends State<CreateWalletScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,25 +38,23 @@ class _AddTransactionState extends State<AddTransaction> {
             ),
             child: Column(
               children: [
-                Row(
+                const Row(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                         width: 15), // Khoảng cách giữa biểu tượng và TextField
 
-                    const Icon(
+                    Icon(
                       Icons.money,
                       size: 35, // Thay đổi biểu tượng theo nhu cầu của bạn
                       color: Colors.black38,
                     ),
-                    const SizedBox(
+                    SizedBox(
                         width: 20), // Khoảng cách giữa biểu tượng và TextField
                     Expanded(
                       child: TextField(
-                        controller: amountInput,
                         keyboardType: TextInputType.number,
-                        style:
-                            const TextStyle(color: Colors.green, fontSize: 24),
-                        decoration: const InputDecoration(
+                        style: TextStyle(color: Colors.green, fontSize: 24),
+                        decoration: InputDecoration(
                           labelText: 'Nhập số tiền',
                           labelStyle: TextStyle(color: Colors.green),
                           focusedBorder: UnderlineInputBorder(
@@ -80,30 +68,25 @@ class _AddTransactionState extends State<AddTransaction> {
                 ),
                 const SizedBox(height: 20),
                 InkWell(
-                  onTap: () async {
-                    final result = await Navigator.push(
+                  onTap: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
                               const ChooseItemScreen()), // Replace YourNewScreen with the actual name of your new screen
                     );
-
-                    setState(() {
-                      selectedUrl = result.iconUrl;
-                      selectedtitle = result.title;
-                    });
                   },
-                  child: Row(
+                  child: const Row(
                     children: [
                       CircleAvatar(
                         radius: 30.0,
                         backgroundImage:
-                            AssetImage(selectedUrl ?? 'assets/icon-logo-x.png'),
+                            AssetImage('assets/wallet_icon/savings-icon.png'),
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(width: 10),
                       Text(
-                        selectedtitle ?? "Chọn nhóm",
-                        style: const TextStyle(
+                        "Chọn nhóm",
+                        style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
                             color: Colors.black38),
@@ -177,14 +160,9 @@ class _AddTransactionState extends State<AddTransaction> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
-          await APIs.addTransaction(widget.wallet, selectedUrl, selectedtitle,
-                  amountInput as double)
-              .then((value) async {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (_) => const TransactionScreen()),
-            );
-          });
+        onPressed: () {
+          // Hành động khi nút được nhấn
+          // Thêm hành động lưu giao dịch ở đây
         },
         label: const Text('Lưu giao dịch'),
         icon: const Icon(Icons.add),

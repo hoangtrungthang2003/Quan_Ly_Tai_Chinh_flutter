@@ -16,7 +16,9 @@ class _ListTransactionState extends State<ListTransaction> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.black),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: const Text(
           "Danh sách giao dịch",

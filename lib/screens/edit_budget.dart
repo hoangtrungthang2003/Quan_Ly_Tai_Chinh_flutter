@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/screens/Page_budget.dart';
 
-class editBudget extends StatelessWidget {
+class viewbudget extends StatelessWidget {
+  const viewbudget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Thêm ngân sách"),
+        title: const Text("Thêm ngân sách"),
         leading: IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Budget()),
-              );
+              Navigator.pop(context);
             },
-            icon: Icon(Icons.close)),
+            icon: const Icon(Icons.close)),
         backgroundColor: Colors.lightBlue,
       ),
-      body: update_budget(),
+      body: const update_budget(),
     );
   }
 }
@@ -37,7 +36,7 @@ class _update_budgetState extends State<update_budget> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 400,
           height: 30,
         ),

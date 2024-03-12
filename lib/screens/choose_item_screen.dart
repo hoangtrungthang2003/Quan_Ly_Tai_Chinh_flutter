@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/giao_dich_page/card_item.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ChooseItemScreen extends StatefulWidget {
   const ChooseItemScreen({Key? key}) : super(key: key);
@@ -9,6 +15,58 @@ class ChooseItemScreen extends StatefulWidget {
 }
 
 class _ChooseItemScreenState extends State<ChooseItemScreen> {
+  List<String> listIcons = [];
+  List<String> title = [
+    'Ăn uống',
+    'Du lịch',
+    'Mua sắm',
+    'Đi chơi',
+    'Tiền lương',
+    'Học tập',
+    'Thể dục',
+    'Nghỉ ngơi',
+    'Xem phim',
+    'Nghe nhạc',
+    'Thiết kế',
+    'Lập trình',
+    'Ngủ đủ giấc',
+    'Học nấu ăn',
+    'Ngắm cảnh',
+    'Chơi game',
+    'Tập yoga',
+    'Đọc sách',
+    'Viết blog',
+    'Chụp ảnh',
+    'Dự sự kiện',
+    'Làm từ thiện',
+    'Thăm mưu nghiên cứu',
+    'Ngắm sao',
+  ];
+  @override
+  void initState() {
+    super.initState();
+    loadIcons();
+  }
+
+  Future<void> loadIcons() async {
+    try {
+      ByteData data = await rootBundle.load('AssetManifest.json');
+      String manifestContent = utf8.decode(data.buffer.asUint8List());
+      Map<String, dynamic> manifestMap = json.decode(manifestContent);
+
+      // Lọc ra danh sách các tệp ảnh từ manifest
+      List<String> imagePaths = manifestMap.keys
+          .where((String key) => key.startsWith('assets/item_icon/'))
+          .toList();
+
+      setState(() {
+        listIcons = imagePaths;
+      });
+    } catch (e) {
+      print('Error loading icons: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -50,24 +108,39 @@ class _ChooseItemScreenState extends State<ChooseItemScreen> {
         ),
         body: TabBarView(
           children: [
-            _buildTabContent("Ăn uống"),
-            _buildTabContent("Ăn uống"),
-            _buildTabContent("Ăn uống"),
+            _buildTabContent(),
+            _buildTabContent(),
+            _buildTabContent(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTabContent(String title) {
-    return ListView(
-      children: [
-        CardItem(title: title, iconUrl: 'assets/item_icon/cart.png'),
-        CardItem(title: title, iconUrl: 'assets/item_icon/cart.png'),
-        CardItem(title: title, iconUrl: 'assets/item_icon/cart.png'),
-        CardItem(title: title, iconUrl: 'assets/item_icon/cart.png'),
-        CardItem(title: title, iconUrl: 'assets/item_icon/cart.png'),
-      ],
-    );
+  List<CardItem> cartItems = [];
+
+  Widget _buildTabContent() {
+    for (int i = 0; i < title.length; i++) {
+      CardItem cartItem = CardItem(
+        title: title[i],
+        iconUrl: listIcons[i],
+      );
+      cartItems.add(cartItem);
+    }
+    return listIcons.isEmpty
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : ListView.builder(
+            itemCount: listIcons.length,
+            itemBuilder: (context, index) {
+              return InkWell(
+                  onTap: () {
+                    Navigator.pop(context, cartItems[index]);
+                  },
+                  child:
+                      CardItem(title: title[index], iconUrl: listIcons[index]));
+            },
+          );
   }
 }

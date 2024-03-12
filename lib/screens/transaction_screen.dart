@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quan_li_tai_chinh/models/wallet.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/giao_dich_page/history_widget.dart';
 
 class TransactionScreen extends StatefulWidget {
-  const TransactionScreen({super.key});
+  const TransactionScreen({super.key, this.wallet});
+  final Wallet? wallet;
 
   @override
   State<TransactionScreen> createState() => _TransactionScreenState();

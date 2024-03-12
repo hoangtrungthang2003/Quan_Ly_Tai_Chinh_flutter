@@ -18,6 +18,14 @@ dependencies:
   fl_chart: ^0.66.2
   font_awesome_flutter: ^10.7.0
   collection: ^1.18.0
+  carousel_slider: ^4.2.1
+  firebase_storage: ^11.5.3
+  cloud_firestore: ^4.13.2
+  intl: ^0.19.0
+  path_provider: ^2.1.2
+  uuid: ^4.0.5
+  logger: ^2.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -29,3 +37,8 @@ flutter:
   assets:
     - assets/item_icon/
     - assets/wallet_icon/
+    - assets/icon-logo-x.png
+    - assets/demo1.png
+    - assets/demo2.png
+    - assets/demo3.png
+    - assets/

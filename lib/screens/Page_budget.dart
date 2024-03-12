@@ -22,7 +22,7 @@ class Budget extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
+                    child: SizedBox(
                       height: 20,
                       child: Stack(
                         children: [
@@ -143,7 +143,7 @@ class Budget extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => editBudget()),
+                      MaterialPageRoute(builder: (context) => viewbudget()),
                     );
                   },
                   style: TextButton.styleFrom(
@@ -175,14 +175,14 @@ class Budget extends StatelessWidget {
           ),
         ),
         buildSection(context, "Mua sam", "100.000", "10003", "Hom nay"),
-        SizedBox(
+        const SizedBox(
           height: 20,
           // child: Container(
           //   color: Colors.red,
           // ),
         ),
         buildSection(context, "Xem phim", "100.000", "10003", "Hom nay"),
-        SizedBox(
+        const SizedBox(
           height: 20,
           // child: Container(
           //   color: Colors.red,

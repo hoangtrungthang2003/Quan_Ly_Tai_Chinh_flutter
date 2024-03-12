@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quan_li_tai_chinh/apis/APIs.dart';
+import 'package:flutter_quan_li_tai_chinh/models/wallet.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/home_page/customCard.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/home_page/customCard2.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter_quan_li_tai_chinh/models/CostData.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.wallet});
+  final Wallet wallet;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -14,107 +18,179 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isHidden = false;
+
   @override
   Widget build(BuildContext context) {
+    final currencyFormatter =
+        NumberFormat.currency(locale: 'en_US', symbol: '');
+    final amountfm = widget.wallet != null
+        ? currencyFormatter.format(widget.wallet.amount)
+        : '';
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 242, 239, 255),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            // Body Screen
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      isHidden
-                          ? const Text(
-                              '**********',
-                              style: TextStyle(
-                                  fontSize: 26, fontWeight: FontWeight.w600),
-                            )
-                          : const Text(
-                              '5,000,000.00 ₫',
-                              style: TextStyle(
-                                  fontSize: 26, fontWeight: FontWeight.w600),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  // Body Screen
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            isHidden
+                                ? const Text(
+                                    '**********',
+                                    style: TextStyle(
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.w600),
+                                  )
+                                : Text(
+                                    '$amountfm ₫',
+                                    style: const TextStyle(
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                            const SizedBox(width: 10),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isHidden = !isHidden;
+                                });
+                              },
+                              child: isHidden
+                                  ? const Icon(Icons.remove_red_eye)
+                                  : const Icon(Icons.remove_red_eye_outlined),
                             ),
-                      const SizedBox(width: 10),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isHidden = !isHidden;
-                          });
-                        },
-                        child: isHidden
-                            ? const Icon(Icons.remove_red_eye)
-                            : const Icon(Icons.remove_red_eye_outlined),
-                      ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.notifications),
-                    onPressed: () {
-                      // Xử lý khi nút tìm kiếm được nhấn
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  const Text(
-                    "Tổng số dư",
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                  const SizedBox(width: 5),
-                  Center(
-                    child: Container(
-                      width: 15,
-                      height: 15,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.grey,
-                          width: .5,
+                          ],
                         ),
-                      ),
-                      child: const Center(
-                        child: Icon(
-                          Icons.question_mark_sharp,
-                          size: 12,
-                          color: Colors.grey,
+                        IconButton(
+                          icon: const Icon(Icons.notifications),
+                          onPressed: () {
+                            // Xử lý khi nút tìm kiếm được nhấn
+                          },
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(children: [
-                  Container(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    decoration: const BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(color: Colors.grey, width: .5))),
-                    child: const Row(
+                    Row(
+                      children: [
+                        const Text(
+                          "Tổng số dư",
+                          style: TextStyle(color: Colors.grey, fontSize: 12),
+                        ),
+                        const SizedBox(width: 5),
+                        Center(
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: .5,
+                              ),
+                            ),
+                            child: const Center(
+                              child: Icon(
+                                Icons.question_mark_sharp,
+                                size: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(children: [
+                        Container(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          decoration: const BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      color: Colors.grey, width: .5))),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Ví của tôi",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black),
+                              ),
+                              Text(
+                                "Xem tất cả",
+                                style: TextStyle(
+                                    color: Colors.green,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 24.0,
+                                  backgroundImage:
+                                      AssetImage(widget.wallet.image),
+                                ),
+                                const SizedBox(width: 10),
+                                Text(widget.wallet.name,
+                                    style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                            Text(
+                              "$amountfm ₫",
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        )
+                      ]),
+                    ),
+                    const SizedBox(height: 20),
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Ví của tôi",
+                          "Báo cáo chi tiêu",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
+                              fontWeight: FontWeight.w500, color: Colors.grey),
+                        ),
+                        Text(
+                          "Xem báo cáo",
+                          style: TextStyle(
+                              color: Colors.green, fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    _grapChiTieu(),
+                    const SizedBox(height: 20),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Giao dịch gần đây",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, color: Colors.grey),
                         ),
                         Text(
                           "Xem tất cả",
@@ -123,73 +199,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 24.0,
-                            backgroundImage: AssetImage(
-                                'assets/wallet_icon/savings-icon.png'),
-                          ),
-                          SizedBox(width: 10),
-                          Text("My wallet name",
-                              style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w500)),
-                        ],
-                      ),
-                      Text(
-                        "5,000,000.00 ₫",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  )
-                ]),
+                    const SizedBox(height: 10),
+                    _recentTransaction(),
+                  ],
+                ), // Body Screen
               ),
-              const SizedBox(height: 20),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Báo cáo chi tiêu",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500, color: Colors.grey),
-                  ),
-                  Text(
-                    "Xem báo cáo",
-                    style: TextStyle(
-                        color: Colors.green, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              _grapChiTieu(),
-              const SizedBox(height: 20),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Giao dịch gần đây",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500, color: Colors.grey),
-                  ),
-                  Text(
-                    "Xem tất cả",
-                    style: TextStyle(
-                        color: Colors.green, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              _recentTransaction(),
-            ],
-          ), // Body Screen
-        ),
-      ),
+            ),
     );
   }
 

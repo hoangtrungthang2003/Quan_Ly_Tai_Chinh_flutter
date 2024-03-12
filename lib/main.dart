@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quan_li_tai_chinh/firebase_options.dart';
 import 'package:flutter_quan_li_tai_chinh/login_page.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/account_screen.dart';
 
 late Size mq;
 void main() async {

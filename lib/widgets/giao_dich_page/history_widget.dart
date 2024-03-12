@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quan_li_tai_chinh/screens/list_transaction_screen.dart';
 import 'package:flutter_quan_li_tai_chinh/widgets/home_page/customCard2.dart';
 
 class HistoryWidget extends StatefulWidget {
@@ -58,7 +59,12 @@ class _HistoryWidgetState extends State<HistoryWidget> {
                 ),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const ListTransaction()));
+                  },
                   child: const Text(
                     "Xem báo cáo giai đoạn này",
                     style: TextStyle(color: Colors.green),

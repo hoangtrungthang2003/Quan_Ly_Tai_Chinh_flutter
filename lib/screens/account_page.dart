@@ -1,10 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_quan_li_tai_chinh/apis/APIs.dart';
+import 'package:flutter_quan_li_tai_chinh/login_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class account extends StatelessWidget {
-  const account({Key? key});
+  const account({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,29 +17,33 @@ class account extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: const Login(),
     );
   }
 }
 
 class Login extends StatelessWidget {
+  const Login({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tài khoản"),
+        title: const Text("Tài khoản"),
       ),
-      body: BodyScreen(),
+      body: const BodyScreen(),
     );
   }
 }
 
 class BodyScreen extends StatelessWidget {
+  const BodyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Center(
@@ -47,7 +54,7 @@ class BodyScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   Image.asset(
-                    "assets/wallet_icon/account.png",
+                    "assets/account.jpg",
                     fit: BoxFit.cover,
                   ),
                   Positioned(
@@ -63,10 +70,10 @@ class BodyScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
@@ -100,15 +107,15 @@ class BodyScreen extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: FaIcon(
+                          icon: const FaIcon(
                             FontAwesomeIcons.wallet,
                             size: 24,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
-                        Text(
+                        const Text(
                           "Ví của tôi",
                           style: TextStyle(fontSize: 19),
                         ),
@@ -118,15 +125,15 @@ class BodyScreen extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: FaIcon(
+                          icon: const FaIcon(
                             FontAwesomeIcons.userGroup,
                             size: 24,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
-                        Text(
+                        const Text(
                           "Nhóm",
                           style: TextStyle(fontSize: 19),
                         ),
@@ -136,15 +143,15 @@ class BodyScreen extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: FaIcon(
+                          icon: const FaIcon(
                             FontAwesomeIcons.circleInfo,
                             size: 29,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
-                        Text(
+                        const Text(
                           "Hỗ trợ",
                           style: TextStyle(fontSize: 19),
                         ),
@@ -154,15 +161,15 @@ class BodyScreen extends StatelessWidget {
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: FaIcon(
+                          icon: const FaIcon(
                             FontAwesomeIcons.gear,
                             size: 26,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
-                        Text(
+                        const Text(
                           "Cài đặt",
                           style: TextStyle(fontSize: 19),
                         ),
@@ -171,16 +178,33 @@ class BodyScreen extends StatelessWidget {
                     Row(
                       children: [
                         IconButton(
-                          onPressed: () {},
-                          icon: FaIcon(
+                          onPressed: () async {
+                            await APIs.auth.signOut().then((value) async {
+                              await GoogleSignIn().signOut().then((value) {
+                                if (Navigator.canPop(context)) {
+                                  Navigator.pop(
+                                      context); // Close the current screen
+                                } else {
+                                  // No active route, use push instead of pushReplacement
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => const LoginPage()));
+                                }
+                                APIs.auth = FirebaseAuth
+                                    .instance; // Reset the authentication instance
+                              });
+                            });
+                          },
+                          icon: const FaIcon(
                             FontAwesomeIcons.rightToBracket,
                             size: 24,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30,
                         ),
-                        Text(
+                        const Text(
                           "Đăng xuất",
                           style: TextStyle(fontSize: 19),
                         ),
